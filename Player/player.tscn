@@ -1,0 +1,105 @@
+[gd_scene load_steps=19 format=3 uid="uid://dxxj5pcevf2kt"]
+
+[ext_resource type="Texture2D" uid="uid://cugq0cjvp0gln" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/idle/player-idle-1.png" id="1_mlb8l"]
+[ext_resource type="Script" path="res://Player/player.cs" id="1_o4dqb"]
+[ext_resource type="Texture2D" uid="uid://bino3blf5p8io" path="res://Pixels/Sunny-land-assets-files/PNG/spritesheets/player-hurt.png" id="1_qw1ws"]
+[ext_resource type="Texture2D" uid="uid://clco8iipk2dtv" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/idle/player-idle-2.png" id="2_cpskl"]
+[ext_resource type="Texture2D" uid="uid://dp6atswfthxuc" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/idle/player-idle-3.png" id="3_vn8g8"]
+[ext_resource type="Texture2D" uid="uid://cdiyy24m7v8f0" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/idle/player-idle-4.png" id="4_t3f6v"]
+[ext_resource type="Texture2D" uid="uid://mf5lfj0xfurg" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/jump/player-jump-1.png" id="5_3sjnu"]
+[ext_resource type="Texture2D" uid="uid://kfesr44hp6o7" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/jump/player-jump-2.png" id="6_j0hql"]
+[ext_resource type="Texture2D" uid="uid://3xug3rleetba" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/run/player-run-1.png" id="7_ypbih"]
+[ext_resource type="Texture2D" uid="uid://c7v6j40cwe823" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/run/player-run-2.png" id="8_atm6e"]
+[ext_resource type="Texture2D" uid="uid://0ipubpici3d5" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/run/player-run-3.png" id="9_5gb5u"]
+[ext_resource type="Texture2D" uid="uid://b1l3xyc3hlw1x" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/run/player-run-4.png" id="10_21w8o"]
+[ext_resource type="Texture2D" uid="uid://bb8w6js4r5im1" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/run/player-run-5.png" id="11_gahon"]
+[ext_resource type="Texture2D" uid="uid://c4fc7x0tcxh7q" path="res://Pixels/Sunny-land-assets-files/PNG/sprites/player/run/player-run-6.png" id="12_86q2x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m372k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l40ty"]
+atlas = ExtResource("1_qw1ws")
+region = Rect2(0, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0npq"]
+atlas = ExtResource("1_qw1ws")
+region = Rect2(33, 0, 33, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q0t4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l40ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0npq")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mlb8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cpskl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vn8g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t3f6v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3sjnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j0hql")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ypbih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_atm6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5gb5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_21w8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gahon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_86q2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_86q2x")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_o4dqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_m372k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q0t4h")
+animation = &"Idle"
+frame_progress = 0.366922
